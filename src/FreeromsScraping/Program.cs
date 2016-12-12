@@ -86,7 +86,7 @@ namespace FreeromsScraping
 
         private static string ParseContentForFileLink(string html)
         {
-            var regex = new Regex(@"document\.getElementById\(""romss""\)\.innerHTML='&nbsp;<a href=""(?<link>http:\/\/(?:\w|\d)+\.freeroms\.com\/(?:\/|\w|\.|-|,|!|\(|\)|\+|\[|\]|%)+)"">Direct&nbsp;Download<\/a>&nbsp;';", RegexOptions.Compiled);
+            var regex = new Regex(@"document\.getElementById\(""romss""\)\.innerHTML='&nbsp;<a href=""(?<link>http:\/\/((?:\/|\w|\.|-|,|!|\(|\)|\+|\[|\]|%)+)\.freeroms\.com\/(?:\/|\w|\.|-|,|!|\(|\)|\+|\[|\]|%)+)"">Direct&nbsp;Download<\/a>&nbsp;';", RegexOptions.Compiled);
             var match = regex.Match(html);
 
             if (!match.Success)
