@@ -124,6 +124,7 @@ namespace FreeromsScraping
                 var top = Console.CursorTop;
                 var fileSize = response.Content.Headers.ContentLength;
 
+
                 using (var stream = await RetryHelper.ExecuteAndThrowAsync(() => response.Content.ReadAsStreamAsync(), e => true).ConfigureAwait(false))
                 {
                     using (var destination = new FileStream(path, FileMode.Create))
@@ -148,7 +149,7 @@ namespace FreeromsScraping
 
                         sw.Start();
                         Console.CursorVisible = false;
-                        await stream.CopyToAsync(destination, progress);
+                        await stream.CopyToAsync(destination, progress, 8192);
                         Console.CursorVisible = true;
                         Console.WriteLine();
                         sw.Stop();
